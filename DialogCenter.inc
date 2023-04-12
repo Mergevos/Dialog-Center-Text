@@ -22,6 +22,10 @@
 	 		10-01-2017:
 	 			* Added support for caption (title) [beta]
 
+			12-04-2023:
+				* Added include guard.
+				* Use open.mp instead of a_samp
+				* Add DIALOG_STYLE tag within functions' arguments if needed.
 
 
 	 	Thanks to:
@@ -30,10 +34,12 @@
 	---------------------------------------
 */
 
-#include <a_samp>
+#if defined _INC_CENTER_DIALOG
+	#endinput
+#endif
+#define _INC_CENTER_DIALOG
 
-
-#define _INC_CENTER_DIALOG // For other includes
+#include <open.mp>
 
 
 static const stock letters[ ] [ ] = 
@@ -140,7 +146,7 @@ static
 	bool:use = false
 ;
 
-stock dcenter_ShowPlayerDialog(playerid, dialogid, style, caption[], info[], button1[], button2[])
+stock dcenter_ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE: style, caption[], info[], button1[], button2[])
 {
 	new defaultSize;
 
